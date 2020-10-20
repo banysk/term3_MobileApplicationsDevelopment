@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HW1.MainPage"
+             BackgroundColor="#FFFFF"
+             Title="Basket">
+
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical"
+                     BackgroundColor="#FFFFFF">
+            <ScrollView VerticalOptions="Center"
+                        x:Name="container">
+            </ScrollView>
+
+            <Grid VerticalOptions="EndAndExpand"
+                  Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btn_order"
+                        Text="Order"
+                        WidthRequest="150"
+                        HorizontalOptions="Center"
+                        BorderColor="Black"
+                        BorderWidth="2"
+                        BackgroundColor="Transparent"
+                        Opacity="0.7"
+                        BorderRadius="10"
+                        Grid.Column="1">
+                </Button>
+                <Button x:Name="btn_add"
+                        WidthRequest="50"
+                        HeightRequest="50"
+                        BorderRadius="25"
+                        HorizontalOptions="Center"
+                        BorderColor="Black"
+                        BorderWidth="2"
+                        BackgroundColor="Transparent"
+                        Opacity="0.7"
+                        Text="+"
+                        Clicked="Btn_add_Clicked"
+                        Grid.Column="2">
+                </Button>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>
