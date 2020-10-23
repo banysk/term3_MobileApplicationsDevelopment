@@ -25,15 +25,17 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Editor x:Name="amount"
-                       Grid.Column="0"
-                       BackgroundColor="Transparent"
+                        Grid.Column="0"
+                        TextChanged="amount_TextChanged"
+                        BackgroundColor="Transparent"
                         Keyboard="Numeric">
                 </Editor>
                 <Stepper x:Name="stepper"
                          Grid.Column="1"
                          Minimum="1"
                          Maximum="100"
-                         Increment="1">
+                         Increment="1"
+                         ValueChanged="stepper_ValueChanged">
                 </Stepper>
             </Grid>
             <Grid VerticalOptions="EndAndExpand"
@@ -52,7 +54,8 @@
                         BackgroundColor="Transparent"
                         Opacity="0.7"
                         BorderRadius="10"
-                        Grid.Column="1">
+                        Grid.Column="1"
+                        Clicked="btn_confirm_Clicked">
                 </Button>
             </Grid>
         </StackLayout>

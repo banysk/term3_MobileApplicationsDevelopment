@@ -43,13 +43,45 @@ namespace HW1
             }
         };
 
-        private void picker_SelectedIndexChanged(object sender, EventArgs e)
+        private void picker_SelectedIndexChanged(object _sender, EventArgs _e)
         {
-            amount.Text = "0";
+            amount.Text = "1";
             img.Source = ImageSource.FromFile(items.Where(a => a.Name == picker.SelectedItem?.ToString()).First().PathToPic);
-            stepper.Value = 0;
+            stepper.Value = 1;
+            if (MainPage.goods.ContainsKey(picker.SelectedItem?.ToString()))
+            {
+                stepper.Value = MainPage.goods[picker.SelectedItem?.ToString()].Count;
+                amount.Text = MainPage.goods[picker.SelectedItem?.ToString()].Count.ToString();
+            }
         }
 
+        private void stepper_ValueChanged(object _sender, ValueChangedEventArgs _e)
+        {
+            amount.Text = stepper.Value.ToString();
+        }
 
+        private void amount_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            int num;
+            if (int.TryParse(amount.Text, out num) && num >= 0 && num <= 100)
+            {
+                stepper.Value = num;
+            }
+            else
+            {
+                amount.Text = stepper.Value.ToString();
+            }
+        }
+
+        async private void btn_confirm_Clicked(object sender, EventArgs e)
+        {
+            MainPage.goods[picker.SelectedItem?.ToString()] = new Good()
+            {
+                Name = picker.SelectedItem?.ToString(),
+                Count = int.Parse(amount.Text),
+                PathToPic = items.Where(a => a.Name == picker.SelectedItem?.ToString()).First().PathToPic
+            };
+            await DisplayAlert("Order", "Succesfull", "OK");
+        }
     }
 }

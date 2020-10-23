@@ -2,15 +2,38 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HW1.MainPage"
+             xmlns:local="clr-namespace:HW1"
              BackgroundColor="#FFFFF"
-             Title="Basket">
-
+             Title="Cart">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:Array x:Key="kkk" Type="{x:Type local:Good}">
+            </x:Array>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Orientation="Vertical"
                      BackgroundColor="#FFFFFF">
-            <ScrollView VerticalOptions="Center"
-                        x:Name="container">
-            </ScrollView>
+            <ListView x:Name="goods_list" ItemsSource="{StaticResource Key=kkk}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid x:Name="cart">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.1*"/>
+                                    <ColumnDefinition Width="0.2*"/>
+                                    <ColumnDefinition Width="0.2*"/>
+                                    <ColumnDefinition Width="0.1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" BackgroundColor="Navy" Source="{Binding PathToPic}"/>
+                                <Label Grid.Column="1" VerticalOptions="Center" FontSize="Large"  Text="{Binding Name}"/>
+                                <Label Grid.Column="2" VerticalOptions="Center" FontSize="Large" Text="{Binding Count}"/>
+                                <Button Grid.Column="3" Text="x" CommandParameter="{Binding Name}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
             <Grid VerticalOptions="EndAndExpand"
                   Margin="10">
@@ -28,13 +51,15 @@
                         BackgroundColor="Transparent"
                         Opacity="0.7"
                         BorderRadius="10"
-                        Grid.Column="1">
+                        Grid.Column="1"
+                        Clicked="btn_order_Clicked">
                 </Button>
                 <Button x:Name="btn_add"
-                        WidthRequest="50"
-                        HeightRequest="50"
-                        BorderRadius="25"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        BorderRadius="20"
                         HorizontalOptions="Center"
+                        VerticalOptions="Center"
                         BorderColor="Black"
                         BorderWidth="2"
                         BackgroundColor="Transparent"
