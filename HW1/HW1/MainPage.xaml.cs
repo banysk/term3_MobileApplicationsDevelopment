@@ -9,6 +9,7 @@ using Xamarin.Forms.Xaml;
 
 namespace HW1
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public class Good
     {
         public string Name { get; set; }
