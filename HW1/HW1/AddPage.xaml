@@ -4,58 +4,28 @@
              x:Class="HW1.AddPage">
 
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical"
-                     BackgroundColor="#FFFFF">
-            <Picker x:Name="picker"
-                    BackgroundColor="Transparent"
-                    SelectedIndexChanged="picker_SelectedIndexChanged">
+        <StackLayout Orientation="Vertical" BackgroundColor="#FFFFF">
+            <Picker x:Name="picker" BackgroundColor="Transparent" SelectedIndexChanged="picker_SelectedIndexChanged">
             </Picker>
-            <Image x:Name="img"
-                   BackgroundColor="Transparent"
-                   WidthRequest="{OnPlatform Android=300}"
-                   HeightRequest="{OnPlatform Android=300}"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"
-                   Source="pepsi.png"
-                   Margin="10">
+            <Image x:Name="img" BackgroundColor="Transparent" WidthRequest="{OnPlatform Android=300}" HeightRequest="{OnPlatform Android=300}" HorizontalOptions="Center" VerticalOptions="Center" Source="pepsi.png" Margin="10">
             </Image>
             <Grid Padding="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Editor x:Name="amount"
-                        Grid.Column="0"
-                        TextChanged="amount_TextChanged"
-                        BackgroundColor="Transparent"
-                        Keyboard="Numeric">
+                <Editor x:Name="amount" Grid.Column="0" Unfocused="amount_Unfocused" BackgroundColor="Transparent" Keyboard="Numeric">
                 </Editor>
-                <Stepper x:Name="stepper"
-                         Grid.Column="1"
-                         Minimum="1"
-                         Maximum="100"
-                         Increment="1"
-                         ValueChanged="stepper_ValueChanged">
+                <Stepper x:Name="stepper" Grid.Column="1" Minimum="1" Maximum="100" Increment="1" ValueChanged="stepper_ValueChanged">
                 </Stepper>
             </Grid>
-            <Grid VerticalOptions="EndAndExpand"
-                  Margin="10">
+            <Grid VerticalOptions="EndAndExpand" Margin="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="btn_confirm"
-                        Text="confirm"
-                        WidthRequest="150"
-                        HorizontalOptions="Center"
-                        BorderColor="Black"
-                        BorderWidth="2"
-                        BackgroundColor="Transparent"
-                        Opacity="0.7"
-                        BorderRadius="10"
-                        Grid.Column="1"
-                        Clicked="btn_confirm_Clicked">
+                <Button x:Name="btn_confirm" Text="confirm" WidthRequest="150" HorizontalOptions="Center" BorderColor="Black" BorderWidth="2" BackgroundColor="Transparent" Opacity="0.7" BorderRadius="10" Grid.Column="1" Clicked="btn_confirm_Clicked">
                 </Button>
             </Grid>
         </StackLayout>

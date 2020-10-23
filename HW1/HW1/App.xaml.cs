@@ -9,8 +9,7 @@ namespace HW1
         public App()
         {
             InitializeComponent();
-            var page = new NavigationPage(new MainPage());
-            MainPage = page;
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()

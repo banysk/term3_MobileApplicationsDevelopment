@@ -6,15 +6,8 @@
              Title="Cart">
     
     <ContentPage.Content>
-        <StackLayout Orientation="Vertical"
-                     BackgroundColor="#FFFFFF"
-                     VerticalOptions="CenterAndExpand">
-            <ListView x:DataType="local:Good"
-                      x:Name="goods_list"
-                      SeparatorVisibility="Default"
-                      SeparatorColor="AliceBlue"
-                      SelectionMode="None"
-                      RowHeight="60">
+        <StackLayout Orientation="Vertical" BackgroundColor="#FFFFFF" VerticalOptions="Center">
+            <ListView x:DataType="local:Good" x:Name="goods_list" SeparatorVisibility="Default" SeparatorColor="AliceBlue" SelectionMode="None" RowHeight="60">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -36,37 +29,15 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <Grid VerticalOptions="EndAndExpand"
-                  Margin="10">
+            <Grid VerticalOptions="End" Margin="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="btn_order"
-                        Text="Order"
-                        WidthRequest="150"
-                        HorizontalOptions="Center"
-                        BorderColor="Black"
-                        BorderWidth="2"
-                        BackgroundColor="Transparent"
-                        Opacity="0.7"
-                        BorderRadius="10"
-                        Grid.Column="1"
-                        Clicked="btn_order_Clicked">
+                <Button x:Name="btn_order" Text="Order" WidthRequest="150" HorizontalOptions="Center" BorderColor="Black" BorderWidth="2" BackgroundColor="Transparent" Opacity="0.7" BorderRadius="10" Grid.Column="1" Clicked="btn_order_Clicked">
                 </Button>
-                <Button x:Name="btn_add"
-                        WidthRequest="40"
-                        HeightRequest="40"
-                        BorderRadius="20"
-                        HorizontalOptions="Center"
-                        BorderColor="Black"
-                        BorderWidth="2"
-                        BackgroundColor="Transparent"
-                        Opacity="0.7"
-                        Text="+"
-                        Clicked="Btn_add_Clicked"
-                        Grid.Column="2">
+                <Button x:Name="btn_add" WidthRequest="40" HeightRequest="40" BorderRadius="20" HorizontalOptions="Center" BorderColor="Black" BorderWidth="2" BackgroundColor="Transparent" Opacity="0.7" Text="+" Clicked="Btn_add_Clicked" Grid.Column="2">
                 </Button>
             </Grid>
         </StackLayout>

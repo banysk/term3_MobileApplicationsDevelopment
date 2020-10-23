@@ -75,12 +75,22 @@ namespace HW1
             amount.Text = stepper.Value.ToString();
         }
 
-        private void amount_TextChanged(object sender, TextChangedEventArgs e)
+        private void amount_Unfocused(object sender, TextChangedEventArgs e)
         {
             int num;
-            if (int.TryParse(amount.Text, out num) && num >= 0 && num <= 100)
+            if (int.TryParse(amount.Text, out num))
             {
                 stepper.Value = num;
+                if (num > 100)
+                {
+                    amount.Text = "100";
+                    stepper.Value = 100;
+                }
+                if (num < 0)
+                {
+                    amount.Text = "1";
+                    stepper.Value = 1;
+                }
             }
             else
             {
