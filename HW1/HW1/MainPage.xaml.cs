@@ -20,16 +20,19 @@ namespace HW1
     {
         public static SortedDictionary<string, Good> goods = new SortedDictionary<string, Good>();
         public static bool bOpened = false;
+		
         public void UpdateListView()
         {
             var buf = goods.Select((a) => { return a.Value; }).ToList();
             goods_list.ItemsSource = buf;
         }
+		
         public MainPage()
         {
             InitializeComponent();
             UpdateListView();
         }
+		
         private void Btn_add_Clicked(object sender, EventArgs e)
         {   
             if (!bOpened)
@@ -41,6 +44,7 @@ namespace HW1
                 cart.Disappearing += (send, ev) => UpdateListView();
             }
         }
+		
         async private void btn_order_Clicked(object sender, EventArgs e)
         {
             if (await DisplayAlert("Order", "Are you sure?", "Yes", "No"))

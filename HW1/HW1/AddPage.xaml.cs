@@ -18,7 +18,7 @@ namespace HW1
             picker.ItemsSource = items.Select(a => a.Name).ToList();
             picker.SelectedIndex = 0;
         }
-
+		
         public class MyItem{
             public string Name;
             public string PathToPic;
