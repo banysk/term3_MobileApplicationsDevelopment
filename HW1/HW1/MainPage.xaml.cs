@@ -47,7 +47,7 @@ namespace HW1
 		
         async private void btn_order_Clicked(object sender, EventArgs e)
         {
-            if (await DisplayAlert("Order", "Are you sure?", "Yes", "No"))
+            if (goods.Count > 0 && await DisplayAlert("Order", "Are you sure?", "Yes", "No"))
             {
                 goods.Clear();
                 UpdateListView();
