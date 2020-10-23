@@ -40,8 +40,11 @@ namespace HW1
                 bOpened = true;
                 var cart = new AddPage();
                 Navigation.PushAsync(cart);
-                cart.Disappearing += (send, ev) => bOpened = false;
-                cart.Disappearing += (send, ev) => UpdateListView();
+                cart.Disappearing += (send, ev) =>
+                {
+                    bOpened = false;
+                    UpdateListView();
+                };
             }
         }
 		

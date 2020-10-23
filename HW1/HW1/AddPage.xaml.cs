@@ -40,6 +40,21 @@ namespace HW1
             {
                 Name = "Pepsi",
                 PathToPic = "pepsi.png"
+            },
+            new MyItem()
+            {
+                Name = "J7 Apple",
+                PathToPic = "J7Apple.png"
+            },
+            new MyItem()
+            {
+                Name = "J7 Cherry",
+                PathToPic = "J7Cherry.png"
+            },
+            new MyItem()
+            {
+                Name = "J7 Orange",
+                PathToPic = "J7Orange.png"
             }
         };
 

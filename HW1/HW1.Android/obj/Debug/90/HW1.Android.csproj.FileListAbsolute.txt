@@ -466,3 +466,6 @@ C:\Users\DarkUnicorn\Documents\GitHub\term3_MobileApplicationsDevelopment\HW1\HW
 C:\Users\DarkUnicorn\Documents\GitHub\term3_MobileApplicationsDevelopment\HW1\HW1.Android\obj\Debug\90\res\drawable\lipton.png
 C:\Users\DarkUnicorn\Documents\GitHub\term3_MobileApplicationsDevelopment\HW1\HW1.Android\obj\Debug\90\res\drawable\mirinda.png
 C:\Users\DarkUnicorn\Documents\GitHub\term3_MobileApplicationsDevelopment\HW1\HW1.Android\obj\Debug\90\res\drawable\pepsi.png
+C:\Users\DarkUnicorn\Documents\GitHub\term3_MobileApplicationsDevelopment\HW1\HW1.Android\obj\Debug\90\res\drawable\j7apple.png
+C:\Users\DarkUnicorn\Documents\GitHub\term3_MobileApplicationsDevelopment\HW1\HW1.Android\obj\Debug\90\res\drawable\j7cherry.png
+C:\Users\DarkUnicorn\Documents\GitHub\term3_MobileApplicationsDevelopment\HW1\HW1.Android\obj\Debug\90\res\drawable\j7orange.png
