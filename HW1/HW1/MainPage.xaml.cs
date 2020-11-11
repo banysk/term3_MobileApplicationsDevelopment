@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Newtonsoft.Json;
 
 namespace HW1
 {
@@ -53,9 +54,15 @@ namespace HW1
         {
             if (goods.Count > 0 && await DisplayAlert("Order", "Are you sure?", "Yes", "No"))
             {
+                SortedDictionary<string, int> to_json = new SortedDictionary<string, int>();
+                foreach (var item in goods)
+                {
+                    to_json.Add(item.Key, item.Value.Count);
+                }
+                var json = JsonConvert.SerializeObject(to_json);
                 goods.Clear();
                 UpdateListView();
-                await DisplayAlert("Order", "Ordered!", "Ok");
+                await DisplayAlert("Order", json, "Ok");
                 await Navigation.PopAsync();
             }
         }

@@ -385,3 +385,8 @@ C:\Users\DarkUnicorn\Documents\GitHub\term3_MobileApplicationsDevelopment\HW1\HW
 C:\Users\DarkUnicorn\Documents\GitHub\term3_MobileApplicationsDevelopment\HW1\HW1.Android\obj\Release\90\stamp\_GenerateJavaStubs.stamp
 C:\Users\DarkUnicorn\Documents\GitHub\term3_MobileApplicationsDevelopment\HW1\HW1.Android\obj\Release\90\stamp\_GeneratePackageManagerJava.stamp
 C:\Users\DarkUnicorn\Documents\GitHub\term3_MobileApplicationsDevelopment\HW1\HW1.Android\obj\Release\90\stamp\_ResolveLibraryProjectImports.stamp
+C:\Users\DarkUnicorn\Documents\GitHub\term3_MobileApplicationsDevelopment\HW1\HW1.Android\obj\Release\90\android\assets\Newtonsoft.Json.dll
+C:\Users\DarkUnicorn\Documents\GitHub\term3_MobileApplicationsDevelopment\HW1\HW1.Android\obj\Release\90\android\assets\System.Data.dll
+C:\Users\DarkUnicorn\Documents\GitHub\term3_MobileApplicationsDevelopment\HW1\HW1.Android\obj\Release\90\android\assets\System.Data.pdb
+C:\Users\DarkUnicorn\Documents\GitHub\term3_MobileApplicationsDevelopment\HW1\HW1.Android\obj\Release\90\android\assets\System.Xml.Linq.dll
+C:\Users\DarkUnicorn\Documents\GitHub\term3_MobileApplicationsDevelopment\HW1\HW1.Android\obj\Release\90\android\assets\System.Xml.Linq.pdb
