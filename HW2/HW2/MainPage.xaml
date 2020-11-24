@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:magic="clr-namespace:MagicGradients;assembly=MagicGradients" 
+             x:Class="HW2.MainPage"
+             xmlns:local="clr-namespace:HW2"
+             Title="Notes">
+
+    <ContentPage.Content>
+        <Grid>
+            <magic:GradientView VerticalOptions="FillAndExpand">
+                <magic:GradientView.GradientSource>
+                    <magic:LinearGradient Angle="0">
+                        <magic:GradientStop Color="#338af9" Offset="0" />
+                        <magic:GradientStop Color="#2ff8ff" Offset="0.7" />
+                    </magic:LinearGradient>
+                </magic:GradientView.GradientSource>
+            </magic:GradientView>
+            <ContentPresenter />
+
+            <Grid> 
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="14*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                
+                <Editor VerticalOptions="Start"
+                        TextColor="White"
+                        BackgroundColor="Transparent"
+                        Grid.Row="0"
+                        Placeholder="Text to find"
+                        FontFamily="KonkordRetro.ttf#KonkordRetro"
+                        FontSize="30"
+                        IsEnabled="True"
+                        x:Name="editor"
+                        TextChanged="search"/>
+
+                <ScrollView BackgroundColor="Transparent"
+                            Grid.Row="1"
+                            x:Name="main"
+                            IsVisible="True">
+                    <Grid VerticalOptions="StartAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <StackLayout x:Name="left"
+                                  Grid.Column="0"
+                                  x:DataType="local:Note"
+                                  VerticalOptions="FillAndExpand">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Padding="5">
+                                        <StackLayout.GestureRecognizers>
+
+                                        </StackLayout.GestureRecognizers>
+
+                                        <Frame Padding="5">
+                                            <Label Text="{Binding text}"
+                                                   LineBreakMode="WordWrap">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer NumberOfTapsRequired="2"
+                                                                          CommandParameter="{Binding id}"
+                                                                          Tapped="left_tap">
+                                                    </TapGestureRecognizer>
+                                                    <SwipeGestureRecognizer Direction="Left"
+                                                                            CommandParameter="{Binding id}"
+                                                                            Swiped="left_swipe">
+                                                    </SwipeGestureRecognizer>
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                        </Frame>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+
+                        <StackLayout x:Name="right"
+                                  Grid.Column="1"
+                                  x:DataType="local:Note"
+                                  VerticalOptions="FillAndExpand">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Padding="5">
+
+                                        <Frame Padding="5">
+                                            <Label Text="{Binding text}"
+                                                   LineBreakMode="WordWrap">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer NumberOfTapsRequired="2"
+                                                                          CommandParameter="{Binding id}"
+                                                                          Tapped="right_tap">
+                                                    </TapGestureRecognizer>
+                                                    <SwipeGestureRecognizer Direction="Right"
+                                                                            CommandParameter="{Binding id}"
+                                                                            Swiped="right_swipe">
+                                                    </SwipeGestureRecognizer>
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                        </Frame>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                        
+                    </Grid>
+                </ScrollView>
+
+                <ScrollView BackgroundColor="Transparent"
+                            Grid.Row="1"
+                            x:Name="find"
+                            IsVisible="False">
+                    <Grid VerticalOptions="StartAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout x:Name="left_search"
+                                  Grid.Column="0"
+                                  x:DataType="local:Note"
+                                  VerticalOptions="FillAndExpand">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Padding="5">
+                                        <StackLayout.GestureRecognizers>
+
+                                        </StackLayout.GestureRecognizers>
+
+                                        <Frame Padding="5">
+                                            <Label Text="{Binding text}"
+                                                   LineBreakMode="WordWrap">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer NumberOfTapsRequired="2"
+                                                                          CommandParameter="{Binding id}"
+                                                                          Tapped="left_tap">
+                                                    </TapGestureRecognizer>
+                                                    <SwipeGestureRecognizer Direction="Left"
+                                                                            CommandParameter="{Binding id}"
+                                                                            Swiped="left_swipe">
+                                                    </SwipeGestureRecognizer>
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                        </Frame>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+
+                        <StackLayout x:Name="right_search"
+                                  Grid.Column="1"
+                                  x:DataType="local:Note"
+                                  VerticalOptions="FillAndExpand">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Padding="5">
+
+                                        <Frame Padding="5">
+                                            <Label Text="{Binding text}"
+                                                   LineBreakMode="WordWrap">
+                                                <Label.GestureRecognizers>
+                                                    <TapGestureRecognizer NumberOfTapsRequired="2"
+                                                                          CommandParameter="{Binding id}"
+                                                                          Tapped="right_tap">
+                                                    </TapGestureRecognizer>
+                                                    <SwipeGestureRecognizer Direction="Right"
+                                                                            CommandParameter="{Binding id}"
+                                                                            Swiped="right_swipe">
+                                                    </SwipeGestureRecognizer>
+                                                </Label.GestureRecognizers>
+                                            </Label>
+                                        </Frame>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+
+                    </Grid>
+                </ScrollView>
+
+                <Button VerticalOptions="End"
+                    HorizontalOptions="End"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    CornerRadius="25"
+                    Margin="10"
+                    Text="+"
+                    FontSize="20"
+                    TextColor="White"
+                    BackgroundColor="Transparent"
+                    BorderColor="White"
+                    BorderWidth="2"
+                    Clicked="Add"
+                    Grid.Row="2"/>
+            </Grid>
+
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>

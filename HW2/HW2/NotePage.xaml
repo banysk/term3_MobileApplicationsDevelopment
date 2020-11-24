@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:magic="clr-namespace:MagicGradients;assembly=MagicGradients" 
+             x:Class="HW2.NotePage">
+    <ContentPage.Content>
+        <Grid>
+            <magic:GradientView VerticalOptions="FillAndExpand">
+                <magic:GradientView.GradientSource>
+                    <magic:LinearGradient Angle="0">
+                        <magic:GradientStop Color="#338af9" Offset="0" />
+                        <magic:GradientStop Color="#2ff8ff" Offset="0.7" />
+                    </magic:LinearGradient>
+                </magic:GradientView.GradientSource>
+            </magic:GradientView>
+            <ContentPresenter />
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="14*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+
+                <Label VerticalOptions="Start"
+                       TextColor="White"
+                       Margin="10"
+                       Grid.Row="0"
+                       FontFamily="KonkordRetro.ttf#KonkordRetro"
+                       FontSize="30"
+                       HorizontalOptions="Center"
+                       x:Name="label"/>
+
+                <Frame VerticalOptions="CenterAndExpand"
+                       Margin="5"
+                       HeightRequest="470"
+                       BackgroundColor="Transparent"
+                       BorderColor="White"
+                       CornerRadius="30"
+                       HasShadow="False"
+                       Grid.Row="1">
+                    <Editor VerticalOptions="FillAndExpand"
+                            x:Name="editor"
+                            TextColor="White"
+                            TextChanged="Update"
+                            FontFamily="KonkordRetro.ttf#KonkordRetro"
+                            FontSize="30"
+                            BackgroundColor="Transparent"
+                            Keyboard="Chat"/>
+                </Frame>
+                
+                <Button VerticalOptions="EndAndExpand"
+                        HorizontalOptions="End"
+                        WidthRequest="50"
+                        HeightRequest="50"
+                        CornerRadius="25"
+                        Margin="10"
+                        Text="Save"
+                        FontSize="10"
+                        TextColor="White"
+                        BackgroundColor="Transparent"
+                        BorderColor="White"
+                        BorderWidth="2"
+                        Grid.Row="2"
+                        Clicked="Save"/>
+            </Grid>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
