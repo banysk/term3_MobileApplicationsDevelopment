@@ -201,30 +201,30 @@ namespace HW2
             return notes.Select(a => { return a; }).Where(a => a.id == cur_id).ToList()[0];
         }
 
-        private void search(object sender, TextChangedEventArgs e)
+        private void search(object sender, TextChangedEventArgs e) // fixed
         {
+            leftNotes_search.Clear();
+            rightNotes_search.Clear();
             if (editor.Text.Length == 0)
             {
                 main.IsVisible = true;
                 find.IsVisible = false;
-                leftNotes_search.Clear();
-                rightNotes_search.Clear();
             }
             else
             {
                 main.IsVisible = false;
                 find.IsVisible = true;
                 ObservableCollection<Note> notes = new ObservableCollection<Note>();
-                foreach (Note note in leftNotes.Select(a => { return a; }).Where(a => a.text.IndexOf(editor.Text) != -1))
+                foreach (Note note in leftNotes.Select(a => { return a; }))
                 {
                     notes.Add(note);
                 }
-                foreach (Note note in rightNotes.Select(a => { return a; }).Where(a => a.text.IndexOf(editor.Text) != -1))
+                foreach (Note note in rightNotes.Select(a => { return a; }))
                 {
                     notes.Add(note);
                 }
                 int i = 0;
-                foreach (Note note in notes)
+                foreach (Note note in notes.Select(a => { return a; }).Where(a => a.text.IndexOf(editor.Text) != -1))
                 {
                     if (i % 2 == 0)
                     {
