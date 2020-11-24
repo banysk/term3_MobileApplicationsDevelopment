@@ -41,7 +41,7 @@
                        Grid.Row="1">
                     <Editor VerticalOptions="FillAndExpand"
                             x:Name="editor"
-                            TextColor="White"
+                            TextColor="Black"
                             TextChanged="Update"
                             FontFamily="KonkordRetro.ttf#KonkordRetro"
                             FontSize="30"

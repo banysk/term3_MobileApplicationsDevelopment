@@ -52,14 +52,18 @@
                                   VerticalOptions="FillAndExpand">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                    <StackLayout Padding="5">
+                                    <StackLayout Padding="2">
                                         <StackLayout.GestureRecognizers>
 
                                         </StackLayout.GestureRecognizers>
 
-                                        <Frame Padding="5">
+                                        <Frame Padding="8"
+                                               CornerRadius="10">
                                             <Label Text="{Binding text}"
-                                                   LineBreakMode="WordWrap">
+                                                   LineBreakMode="WordWrap"
+                                                   HeightRequest="100"
+                                                   VerticalOptions="Center"
+                                                   VerticalTextAlignment="Center">
                                                 <Label.GestureRecognizers>
                                                     <TapGestureRecognizer NumberOfTapsRequired="2"
                                                                           CommandParameter="{Binding id}"
@@ -83,11 +87,15 @@
                                   VerticalOptions="FillAndExpand">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                    <StackLayout Padding="5">
+                                    <StackLayout Padding="2">
 
-                                        <Frame Padding="5">
+                                        <Frame Padding="8"
+                                               CornerRadius="10">
                                             <Label Text="{Binding text}"
-                                                   LineBreakMode="WordWrap">
+                                                   LineBreakMode="WordWrap"
+                                                   HeightRequest="100"
+                                                   VerticalOptions="Center"
+                                                   VerticalTextAlignment="Center">
                                                 <Label.GestureRecognizers>
                                                     <TapGestureRecognizer NumberOfTapsRequired="2"
                                                                           CommandParameter="{Binding id}"
@@ -124,14 +132,18 @@
                                   VerticalOptions="FillAndExpand">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                    <StackLayout Padding="5">
+                                    <StackLayout Padding="2">
                                         <StackLayout.GestureRecognizers>
 
                                         </StackLayout.GestureRecognizers>
 
-                                        <Frame Padding="5">
+                                        <Frame Padding="8"
+                                               CornerRadius="10">
                                             <Label Text="{Binding text}"
-                                                   LineBreakMode="WordWrap">
+                                                   LineBreakMode="WordWrap"
+                                                   HeightRequest="100"
+                                                   VerticalOptions="Center"
+                                                   VerticalTextAlignment="Center">
                                                 <Label.GestureRecognizers>
                                                     <TapGestureRecognizer NumberOfTapsRequired="2"
                                                                           CommandParameter="{Binding id}"
@@ -155,11 +167,15 @@
                                   VerticalOptions="FillAndExpand">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                    <StackLayout Padding="5">
+                                    <StackLayout Padding="2">
 
-                                        <Frame Padding="5">
+                                        <Frame Padding="8"
+                                               CornerRadius="10">
                                             <Label Text="{Binding text}"
-                                                   LineBreakMode="WordWrap">
+                                                   LineBreakMode="WordWrap"
+                                                   HeightRequest="100"
+                                                   VerticalOptions="Center"
+                                                   VerticalTextAlignment="Center">
                                                 <Label.GestureRecognizers>
                                                     <TapGestureRecognizer NumberOfTapsRequired="2"
                                                                           CommandParameter="{Binding id}"
