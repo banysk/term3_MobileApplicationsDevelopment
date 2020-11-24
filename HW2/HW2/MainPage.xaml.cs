@@ -96,25 +96,10 @@ namespace HW2
             }
         }
 
-
-        private void left_swipe(object sender, SwipedEventArgs e)
-        {
-            swipe(sender, e, "left");
-        }
-
-
-
-        private void right_swipe(object sender, SwipedEventArgs e)
-        {
-            swipe(sender, e, "right");
-        }
-
-        async private void swipe(object sender, SwipedEventArgs e, string side)
+        async private void swipe(object sender, SwipedEventArgs e)
         {
             // Variables
-#pragma warning disable CS0219 // Переменная назначена, но ее значение не используется
             bool isOpened = false;
-#pragma warning restore CS0219 // Переменная назначена, но ее значение не используется
             // magic
             int find_id = int.Parse(e.Parameter.ToString());
             // not magic
