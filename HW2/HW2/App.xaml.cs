@@ -7,9 +7,6 @@ namespace HW2
 {
     public partial class App : Application
     {
-        // Variables
-        public static int globalID = 0;
-
         public App()
         {
             InitializeComponent();

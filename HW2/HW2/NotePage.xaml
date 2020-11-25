@@ -29,7 +29,8 @@
                        FontFamily="KonkordRetro.ttf#KonkordRetro"
                        FontSize="30"
                        HorizontalOptions="Center"
-                       x:Name="label"/>
+                       x:Name="label"
+                       Opacity="0.85"/>
 
                 <Frame VerticalOptions="CenterAndExpand"
                        Margin="5"
@@ -62,7 +63,8 @@
                         BorderColor="White"
                         BorderWidth="2"
                         Grid.Row="2"
-                        Clicked="Save"/>
+                        Clicked="Save"
+                        Opacity="0.85"/>
             </Grid>
 
         </Grid>

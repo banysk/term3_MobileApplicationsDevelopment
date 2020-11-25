@@ -22,8 +22,8 @@ namespace HW2
         public Note()
         {
             text = "";
-            id = ++App.globalID;
-            Application.Current.Properties["globalID"] = App.globalID;
+            id = ++MainPage.globalID;
+            Application.Current.Properties["globalID"] = MainPage.globalID;
         }
     }
 
@@ -35,20 +35,24 @@ namespace HW2
         public static ObservableCollection<Note> rightNotes = new ObservableCollection<Note>();
         public static ObservableCollection<Note> leftNotes_search = new ObservableCollection<Note>();
         public static ObservableCollection<Note> rightNotes_search = new ObservableCollection<Note>();
+        public static int globalID;
 
         // Methods
         public MainPage() // Default constructor
         {
             InitializeComponent();
-            // Get globalID or Set global ID
-            if (Application.Current.Properties.ContainsKey("id"))
+            // Get globalID
+            if (Application.Current.Properties.ContainsKey("globalID"))
             {
-                App.globalID = int.Parse(Application.Current.Properties["globalID"].ToString());
+                globalID = int.Parse(Application.Current.Properties["globalID"].ToString());
             }
             else
             {
-                Application.Current.Properties["globalID"] = App.globalID;
+                globalID = 0;
+                Application.Current.Properties["globalID"] = globalID;
             }
+            // Set title
+            update_title();
             // Set binds
             BindableLayout.SetItemsSource(left, leftNotes);
             BindableLayout.SetItemsSource(right, rightNotes);
@@ -92,6 +96,7 @@ namespace HW2
                 page.Disappearing += (s, ev) =>
                 {
                     bOpened = false;
+                    update_title();
                 };
                 Navigation.PushAsync(page);
             }
@@ -103,13 +108,26 @@ namespace HW2
             bool isOpened = false;
             int find_id = int.Parse(e.Parameter.ToString());
             Note note = find_note(find_id);
-
+            string side = find_side(note);
+            int direction;
+            // Animation
+            if (side == "left")
+            {
+                direction = -1;
+            }
+            else
+            {
+                direction = 1;
+            }
+            (sender as Frame)?.TranslateTo(direction * 100, 0, 300, Easing.CubicInOut);
+            // Removing data
             if (!bOpened)
             {
                 isOpened = true;
                 if (await DisplayAlert("Alert!", "Are you sure?", "Yes", "No"))
                 {
-                    // Removing
+                    await (sender as Frame)?.FadeTo(0, 500, Easing.CubicInOut);
+                    // Removing from collections
                     leftNotes.Remove(note);
                     rightNotes.Remove(note);
                     leftNotes_search.Remove(note);
@@ -141,6 +159,10 @@ namespace HW2
                         leftNotes_search.RemoveAt(size - 1);
                     }
                 }
+                else
+                {
+                    await (sender as Frame)?.TranslateTo(0, 0, 300, Easing.CubicInOut);
+                }
             }
         }
 
@@ -164,6 +186,7 @@ namespace HW2
 
         private void search(object sender, TextChangedEventArgs e) // find note with text
         {
+            btn.IsEnabled = (editor.Text.Length > 0);
             // Clear collections
             leftNotes_search.Clear();
             rightNotes_search.Clear();
@@ -189,7 +212,7 @@ namespace HW2
                 }
                 // Distribute
                 int i = 0;
-                foreach (Note note in notes.Select(a => { return a; }).Where(a => a.text.IndexOf(editor.Text) != -1))
+                foreach (Note note in notes.Select(a => { return a; }).Where(a => a.text.ToLower().IndexOf(editor.Text.ToLower()) != -1))
                 {
                     if (i % 2 == 0)
                     {
@@ -230,6 +253,19 @@ namespace HW2
             {
                 return "right";
             }
+        }
+
+        // Update title
+        private void update_title()
+        {
+            this.Title = "Notes | globalID:" + globalID.ToString();
+        }
+
+        async private void clean(object sender, EventArgs e)
+        {
+            editor.Text = "";
+            await btn.FadeTo(0, 200, Easing.CubicInOut);
+            await btn.FadeTo(1, 200, Easing.CubicInOut);
         }
     }
 }
