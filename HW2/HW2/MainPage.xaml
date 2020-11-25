@@ -67,7 +67,7 @@
                                                 <Label.GestureRecognizers>
                                                     <TapGestureRecognizer NumberOfTapsRequired="2"
                                                                           CommandParameter="{Binding id}"
-                                                                          Tapped="left_tap">
+                                                                          Tapped="tap">
                                                     </TapGestureRecognizer>
                                                     <SwipeGestureRecognizer Direction="Left"
                                                                             CommandParameter="{Binding id}"
@@ -99,7 +99,7 @@
                                                 <Label.GestureRecognizers>
                                                     <TapGestureRecognizer NumberOfTapsRequired="2"
                                                                           CommandParameter="{Binding id}"
-                                                                          Tapped="right_tap">
+                                                                          Tapped="tap">
                                                     </TapGestureRecognizer>
                                                     <SwipeGestureRecognizer Direction="Right"
                                                                             CommandParameter="{Binding id}"
@@ -147,7 +147,7 @@
                                                 <Label.GestureRecognizers>
                                                     <TapGestureRecognizer NumberOfTapsRequired="2"
                                                                           CommandParameter="{Binding id}"
-                                                                          Tapped="left_tap">
+                                                                          Tapped="tap">
                                                     </TapGestureRecognizer>
                                                     <SwipeGestureRecognizer Direction="Left"
                                                                             CommandParameter="{Binding id}"
@@ -179,7 +179,7 @@
                                                 <Label.GestureRecognizers>
                                                     <TapGestureRecognizer NumberOfTapsRequired="2"
                                                                           CommandParameter="{Binding id}"
-                                                                          Tapped="right_tap">
+                                                                          Tapped="tap">
                                                     </TapGestureRecognizer>
                                                     <SwipeGestureRecognizer Direction="Right"
                                                                             CommandParameter="{Binding id}"

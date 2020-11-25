@@ -12,13 +12,15 @@ namespace HW2
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NotePage : ContentPage
     {
-        // Variables
+        // Fields
         string mode;
         string side;
         Note note;
         DateTime date;
         bool isTapped = false;
-        public NotePage()
+
+        // Methods
+        public NotePage() // Default constructor for creating note
         {
             InitializeComponent();
             date = DateTime.Now;
@@ -26,7 +28,7 @@ namespace HW2
             label.Text = date.ToString() + " | 0";
         }
 
-        public NotePage(Note cur_note, string cur_side)
+        public NotePage(Note cur_note, string cur_side) // Constructor for updating and reading note
         {
             InitializeComponent();
             note = cur_note;
@@ -37,12 +39,12 @@ namespace HW2
             side = cur_side;
         }
 
-        private void Update(object sender, EventArgs e)
+        private void Update(object sender, EventArgs e) // Shows information
         {
             label.Text = date.ToString() + " | " + editor.Text.Length;
         }
 
-        private void Save(object sender, EventArgs e)
+        private void Save(object sender, EventArgs e) // Save new Note
         {
             if (!isTapped)
             {

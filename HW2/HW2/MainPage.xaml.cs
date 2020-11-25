@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 
 namespace HW2
 {
-    public class Note
+    public class Note // Note
     {
         // Fields
         public int id { get; private set; }
@@ -27,19 +27,20 @@ namespace HW2
         }
     }
 
-    public partial class MainPage : ContentPage
+    public partial class MainPage : ContentPage // MainPage
     {
-        // Variables
+        // Fields
         bool bOpened = false;
         public static ObservableCollection<Note> leftNotes = new ObservableCollection<Note>();
         public static ObservableCollection<Note> rightNotes = new ObservableCollection<Note>();
         public static ObservableCollection<Note> leftNotes_search = new ObservableCollection<Note>();
         public static ObservableCollection<Note> rightNotes_search = new ObservableCollection<Note>();
 
-        public MainPage()
+        // Methods
+        public MainPage() // Default constructor
         {
             InitializeComponent();
-            // Get globalID
+            // Get globalID or Set global ID
             if (Application.Current.Properties.ContainsKey("id"))
             {
                 App.globalID = int.Parse(Application.Current.Properties["globalID"].ToString());
@@ -48,29 +49,29 @@ namespace HW2
             {
                 Application.Current.Properties["globalID"] = App.globalID;
             }
-            // Binds
+            // Set binds
             BindableLayout.SetItemsSource(left, leftNotes);
             BindableLayout.SetItemsSource(right, rightNotes);
             BindableLayout.SetItemsSource(left_search, leftNotes_search);
             BindableLayout.SetItemsSource(right_search, rightNotes_search);
-            // Get data
+            // Get data from local storage
             if (Application.Current.Properties.ContainsKey("leftNotes"))
             {
-                var json = Application.Current.Properties["leftNotes"];
-                foreach (Note note in JsonConvert.DeserializeObject<ObservableCollection<Note>>(json.ToString()))
+                var json = Application.Current.Properties["leftNotes"].ToString();
+                foreach (Note note in JsonConvert.DeserializeObject<ObservableCollection<Note>>(json))
                 {
                     leftNotes.Add(note);
                 }
             }
             if (Application.Current.Properties.ContainsKey("rightNotes"))
             {
-                var json = Application.Current.Properties["rightNotes"];
-                foreach (Note note in JsonConvert.DeserializeObject<ObservableCollection<Note>>(json.ToString()))
+                var json = Application.Current.Properties["rightNotes"].ToString();
+                foreach (Note note in JsonConvert.DeserializeObject<ObservableCollection<Note>>(json))
                 {
                     rightNotes.Add(note);
                 }
             }
-            // Update data
+            // Create rules for update data in local storage
             leftNotes.CollectionChanged += (s, ev) =>
             {
                 Application.Current.Properties["leftNotes"] = JsonConvert.SerializeObject(leftNotes);
@@ -82,37 +83,38 @@ namespace HW2
         }
 
 
-        private void Add(object sender, EventArgs e)
+        private void Add(object sender, EventArgs e) // Calls NotePage
         {
             if (!bOpened)
             {
                 bOpened = true;
                 var page = new NotePage();
-                Navigation.PushAsync(page);
                 page.Disappearing += (s, ev) =>
                 {
                     bOpened = false;
                 };
+                Navigation.PushAsync(page);
             }
         }
 
-        async private void swipe(object sender, SwipedEventArgs e)
+        async private void swipe(object sender, SwipedEventArgs e) // Remove note
         {
             // Variables
             bool isOpened = false;
-            // magic
             int find_id = int.Parse(e.Parameter.ToString());
-            // not magic
             Note note = find_note(find_id);
+
             if (!bOpened)
             {
                 isOpened = true;
                 if (await DisplayAlert("Alert!", "Are you sure?", "Yes", "No"))
                 {
+                    // Removing
                     leftNotes.Remove(note);
                     rightNotes.Remove(note);
                     leftNotes_search.Remove(note);
                     rightNotes_search.Remove(note);
+                    // Fix collections' sizes
                     int size = 0;
                     if (leftNotes.Count < rightNotes.Count)
                     {
@@ -142,27 +144,15 @@ namespace HW2
             }
         }
 
-        private void left_tap(object sender, EventArgs e)
-        {
-            tap(sender, e as TappedEventArgs, "left");
-        }
-
-        private void right_tap(object sender, EventArgs e)
-        {
-            tap(sender, e as TappedEventArgs, "right");
-        }
-
-        private void tap(object sender, TappedEventArgs e, string side)
+        private void tap(object sender, EventArgs e) // open note for updating and reading
         {
             if (!bOpened)
             {
-                // magic
-                int find_id = int.Parse(e.Parameter.ToString());
-                // not magic
-                Note note = null;
+                int find_id = int.Parse((e as TappedEventArgs)?.Parameter.ToString());
+                Note note = find_note(find_id);
+                string side = find_side(note);
                 NotePage page;
                 bOpened = true;
-                note = find_note(find_id);
                 page = new NotePage(note, side);
                 page.Disappearing += (s, ev) =>
                 {
@@ -172,6 +162,49 @@ namespace HW2
             }
         }
 
+        private void search(object sender, TextChangedEventArgs e) // find note with text
+        {
+            // Clear collections
+            leftNotes_search.Clear();
+            rightNotes_search.Clear();
+            // Blocks' visibility 
+            if (editor.Text.Length == 0)
+            {
+                main.IsVisible = true;
+                find.IsVisible = false;
+            }
+            else
+            {
+                main.IsVisible = false;
+                find.IsVisible = true;
+                // Merge collections
+                ObservableCollection<Note> notes = new ObservableCollection<Note>();
+                foreach (Note note in leftNotes.Select(a => { return a; }))
+                {
+                    notes.Add(note);
+                }
+                foreach (Note note in rightNotes.Select(a => { return a; }))
+                {
+                    notes.Add(note);
+                }
+                // Distribute
+                int i = 0;
+                foreach (Note note in notes.Select(a => { return a; }).Where(a => a.text.IndexOf(editor.Text) != -1))
+                {
+                    if (i % 2 == 0)
+                    {
+                        leftNotes_search.Add(note);
+                    }
+                    else
+                    {
+                        rightNotes_search.Add(note);
+                    }
+                    i++;
+                }
+            }
+        }
+
+        // Returns Note with id
         private Note find_note(int cur_id)
         {
             ObservableCollection<Note> notes = new ObservableCollection<Note>();
@@ -186,41 +219,16 @@ namespace HW2
             return notes.Select(a => { return a; }).Where(a => a.id == cur_id).ToList()[0];
         }
 
-        private void search(object sender, TextChangedEventArgs e) // fixed
+        // Returns side(string) with Note
+        private string find_side(Note note)
         {
-            leftNotes_search.Clear();
-            rightNotes_search.Clear();
-            if (editor.Text.Length == 0)
+            if (leftNotes.Contains(note))
             {
-                main.IsVisible = true;
-                find.IsVisible = false;
+                return "left";
             }
             else
             {
-                main.IsVisible = false;
-                find.IsVisible = true;
-                ObservableCollection<Note> notes = new ObservableCollection<Note>();
-                foreach (Note note in leftNotes.Select(a => { return a; }))
-                {
-                    notes.Add(note);
-                }
-                foreach (Note note in rightNotes.Select(a => { return a; }))
-                {
-                    notes.Add(note);
-                }
-                int i = 0;
-                foreach (Note note in notes.Select(a => { return a; }).Where(a => a.text.IndexOf(editor.Text) != -1))
-                {
-                    if (i % 2 == 0)
-                    {
-                        leftNotes_search.Add(note);
-                    }
-                    else
-                    {
-                        rightNotes_search.Add(note);
-                    }
-                    i++;
-                }
+                return "right";
             }
         }
     }
