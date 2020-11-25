@@ -139,7 +139,8 @@
                 <ScrollView BackgroundColor="Transparent"
                             Grid.Row="1"
                             x:Name="find"
-                            IsVisible="False">
+                            IsVisible="False"
+                            Opacity="0.85">
                     <Grid VerticalOptions="StartAndExpand">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
