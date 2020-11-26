@@ -119,7 +119,7 @@ namespace HW2
             {
                 direction = 1;
             }
-            (sender as Frame)?.TranslateTo(direction * 100, 0, 300, Easing.CubicInOut);
+            (sender as Frame)?.TranslateTo(direction * (sender as Frame).Width/2, 0, 300, Easing.CubicInOut);
             // Removing data
             if (!bOpened)
             {
@@ -264,8 +264,8 @@ namespace HW2
         async private void clean(object sender, EventArgs e)
         {
             editor.Text = "";
-            await btn.FadeTo(0, 200, Easing.CubicInOut);
-            await btn.FadeTo(1, 200, Easing.CubicInOut);
+            await btn.FadeTo(0, 300, Easing.CubicInOut);
+            await btn.FadeTo(1, 50, Easing.CubicInOut);
         }
     }
 }
