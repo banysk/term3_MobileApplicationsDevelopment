@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HWG.Views.MasterPageView"
+             Title="Master">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!--Style for icons-->
+            <Style x:Key="icon" TargetType="Image">
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="HeightRequest" Value="30" />
+                <Setter Property="WidthRequest" Value="30" />
+            </Style>
+            <!--Style for separator-->
+            <Style x:Key="separator" TargetType="BoxView">
+                <Setter Property="HeightRequest" Value="2"/>
+                <Setter Property="WidthRequest" Value="300"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="Color" Value="Black"/>
+                <Setter Property="BackgroundColor" Value="Black"/>
+                <Setter Property="Opacity" Value="0.5"/>
+                <Setter Property="Margin" Value="0, 10, 0, 10"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center"
+                     Margin="15,-50,15,0"
+                     Padding="5,10,5,10">
+            <Label Text="OpenWeatherMap"
+                   FontSize="26"
+                   FontAttributes="None"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"/>
+
+            <BoxView Style="{StaticResource separator}"/>
+
+            <Frame Padding="15"
+                   CornerRadius="30"
+                   BorderColor="{Binding WeatherBorder}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ShowWeather}"/>
+                </Frame.GestureRecognizers>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0"
+                           Source="weather.png"
+                           Style="{StaticResource icon}"/>
+                    <Label Grid.Column="1"
+                           Text="Погода"
+                           VerticalOptions="Center"/>
+                </Grid>
+            </Frame>
+
+            <Frame Padding="15"
+                   CornerRadius="30"
+                   BorderColor="{Binding CityBorder}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ShowCity}"/>
+                </Frame.GestureRecognizers>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0"
+                           Source="city.png"
+                           Style="{StaticResource icon}"/>
+                    <Label Grid.Column="1"
+                           Text="Выбрать город"
+                           VerticalOptions="Center"/>
+                </Grid>
+            </Frame>
+
+            <BoxView Style="{StaticResource separator}"/>
+
+            <Frame Padding="15"
+                   CornerRadius="30"
+                   BorderColor="Silver">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0"
+                           Source="background.png"
+                           Style="{StaticResource icon}"/>
+                    <Label Grid.Column="1"
+                           Text="Динамический фон"
+                           VerticalOptions="Center"/>
+                    <CheckBox Grid.Column="2"
+                              VerticalOptions="Center"
+                              HorizontalOptions="Center"
+                              IsChecked="{Binding Dynamic}"
+                              IsEnabled="False"/>
+                </Grid>
+            </Frame>
+
+            <Frame Padding="15"
+                   CornerRadius="30"
+                   BorderColor="Silver">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0"
+                           Source="animation.png"
+                           Style="{StaticResource icon}"/>
+                    <Label Grid.Column="1"
+                           Text="Анимация"
+                           VerticalOptions="Center"/>
+                    <CheckBox Grid.Column="2"
+                              VerticalOptions="Center"
+                              HorizontalOptions="Center"
+                              IsChecked="{Binding Animated}"
+                              IsEnabled="False"/>
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

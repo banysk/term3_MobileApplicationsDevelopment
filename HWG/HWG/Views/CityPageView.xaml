@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:magic="clr-namespace:MagicGradients;assembly=MagicGradients"
+             x:Class="HWG.Views.CityPageView"
+             Title="Список городов">
+    <ContentPage.Content>
+        <Grid>
+            <magic:GradientView VerticalOptions="FillAndExpand">
+                <magic:GradientView.GradientSource>
+                    <magic:LinearGradient Angle="0">
+                        <magic:GradientStop Color="#2196f3" Offset="0" />
+                        <magic:GradientStop Color="#ffffff" Offset="1" />
+                    </magic:LinearGradient>
+                </magic:GradientView.GradientSource>
+            </magic:GradientView>
+
+            <Grid Margin="15,0,15,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Entry Grid.Column="0"
+                           Placeholder="Добавить местоположение"
+                           Text="{Binding Input, Mode=TwoWay}"/>
+                    <Button Grid.Column="1"
+                            Text="+"
+                            HeightRequest="40"
+                            WidthRequest="40"
+                            CornerRadius="20"
+                            VerticalOptions="CenterAndExpand"
+                            HorizontalOptions="CenterAndExpand"
+                            Command="{Binding Push}"/>
+                </Grid>
+
+                <ListView Grid.Row="1"
+                          Margin="0"
+                          SeparatorColor="White"
+                          BackgroundColor="Transparent"
+                          ItemsSource="{Binding Cities, Mode=TwoWay}"
+                          SelectedItem="{Binding Current, Mode=TwoWay}"
+                          ItemSelected="list_ItemSelected"
+                          x:Name="list">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell TextColor="Black"
+                                      Text="{Binding .}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
